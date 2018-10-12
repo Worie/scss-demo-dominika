@@ -1,0 +1,76 @@
+$color1: rgba(46, 53, 50, 1);
+$color2: rgba(139, 38, 53, 1);
+$color3: rgba(224, 226, 219, 1);
+$color4: rgba(210, 212, 200, 1);
+$color5: rgba(211, 239, 189, 1);
+
+$base-offset: 20px;
+$default-padding-bottom: $base-offset * 1.25;
+
+$default-text-color: $color5;
+$default-button-color: $color3;
+$default-background-color: $color1;
+$secondary-text-color: $color5;
+$secondary-button-color: $color5;
+$secondary-background-color: $color5;
+$hovered-background-color: transparentize($default-text-color, 0.5);
+
+%is-colored {
+  padding: 5px;
+  color: $default-text-color;
+}
+
+$default-button-height: 100px; 
+$default-button-width: 200px;
+
+@mixin is-button {
+  height: $default-button-height;
+  width: $default-button-width;
+
+  background: $default-background-color;
+}
+
+@mixin is-colored {
+  padding: 5px;
+  color: $default-text-color;
+}
+
+body {
+  background: $default-background-color;
+  @include is-colored();
+  // @extend %is-colored;
+}
+
+h1 {
+  margin: 5px;
+  height: $default-button-height / 2;
+  // background: orange;
+  @include is-colored();
+  // @extend %is-colored;
+}
+
+p {
+  margin: 2px;
+  @include is-colored();
+  // @extend %is-colored;
+}
+
+body {
+  .is-button {
+    font-size: 30px;
+  }
+
+  // @media only screen and (min-width: 0px) {
+  //   @include is-colored();
+  // }
+}
+
+.is-button {
+  @include is-button();
+}
+
+.is-button {
+  &:hover {
+    background: $hovered-background-color;
+  }
+}
